@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BarangayConnect.API.Models;
 using BarangayConnect.API.Data;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 [ApiController]
 [Route("api/[controller]")]
 public class ComplaintController : ControllerBase
@@ -13,27 +14,19 @@ public class ComplaintController : ControllerBase
         _context = context;
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpGet]
-    public IActionResult GetAllComplaints()
+    public IActionResult GetAll()
     {
         return Ok(_context.Complaints.ToList());
     }
 
+    [Authorize(Roles = "Resident,Admin")]
     [HttpPost]
-    public IActionResult SubmitComplaint([FromBody] Complaints complaint)
+    public IActionResult Create([FromBody] Complaints complaint)
     {
         _context.Complaints.Add(complaint);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(GetAllComplaints), new { id = complaint.Id }, complaint);
-    }
-
-    [HttpDelete("{id}")]
-    public IActionResult DeleteComplaint(int id)
-    {
-        var complaint = _context.Complaints.Find(id);
-        if (complaint == null) return NotFound();
-        _context.Complaints.Remove(complaint);
-        _context.SaveChanges();
-        return NoContent();
+        return Ok(complaint);
     }
 }

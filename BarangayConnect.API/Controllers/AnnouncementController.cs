@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BarangayConnect.API.Models;
 using BarangayConnect.API.Data;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 [ApiController]
 [Route("api/[controller]")]
 public class AnnouncementController : ControllerBase
@@ -13,17 +14,19 @@ public class AnnouncementController : ControllerBase
         _context = context;
     }
 
+    [AllowAnonymous]
     [HttpGet]
-    public IActionResult GetAllAnnouncements()
+    public IActionResult GetAll()
     {
-        return Ok(_context.Announcements.OrderByDescending(a => a.PostedOn).ToList());
+        return Ok(_context.Announcements.ToList());
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
-    public IActionResult CreateAnnouncement([FromBody] Announcement announcement)
+    public IActionResult Create([FromBody] Announcement announcement)
     {
         _context.Announcements.Add(announcement);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(GetAllAnnouncements), new { id = announcement.Id }, announcement);
+        return Ok(announcement);
     }
 }

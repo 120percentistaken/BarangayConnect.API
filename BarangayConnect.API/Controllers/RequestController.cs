@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using BarangayConnect.API.Models;
 using BarangayConnect.API.Data;
 using System.Linq;
+
 [ApiController]
 [Route("api/[controller]")]
 public class RequestController : ControllerBase
@@ -16,12 +18,11 @@ public class RequestController : ControllerBase
     [HttpGet]
     public IActionResult GetAllRequests()
     {
-        //return Ok(_context.Requests.ToList());
         var requests = _context.Requests.ToList();
         return Ok(requests);
-
     }
 
+    [Authorize(Roles = "Resident,Admin")]
     [HttpPost]
     public IActionResult CreateRequest([FromBody] Request request)
     {

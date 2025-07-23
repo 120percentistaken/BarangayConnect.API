@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using BarangayConnect.API.Models;
 using BarangayConnect.API.Data;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 [ApiController]
 [Route("api/[controller]")]
 public class OfficialContactController : ControllerBase
@@ -13,25 +14,44 @@ public class OfficialContactController : ControllerBase
         _context = context;
     }
 
+    [AllowAnonymous]
     [HttpGet]
-    public IActionResult GetAllContacts()
+    public IActionResult GetAll()
     {
         return Ok(_context.OfficialContacts.ToList());
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
-    public IActionResult AddContact([FromBody] OfficialContact contact)
+    public IActionResult Create([FromBody] OfficialContact contact)
     {
         _context.OfficialContacts.Add(contact);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(GetAllContacts), new { id = contact.Id }, contact);
+        return Ok(contact);
     }
 
-    [HttpDelete("{id}")]
-    public IActionResult DeleteContact(int id)
+    [Authorize(Roles = "Admin")]
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, [FromBody] OfficialContact updated)
     {
         var contact = _context.OfficialContacts.Find(id);
         if (contact == null) return NotFound();
+
+        contact.Name = updated.Name;
+        contact.Position = updated.Position;
+        contact.ContactInfo = updated.ContactInfo;
+
+        _context.SaveChanges();
+        return Ok(contact);
+    }
+
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var contact = _context.OfficialContacts.Find(id);
+        if (contact == null) return NotFound();
+
         _context.OfficialContacts.Remove(contact);
         _context.SaveChanges();
         return NoContent();

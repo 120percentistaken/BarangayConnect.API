@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "4c085848-1ac1-4aac-b151-d623b4ada87e",
+		"name": "Barangay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46987630",
+		"_collection_link": "https://red-shuttle-9119836.postman.co/workspace/adrian-zen's-Workspace~51dfe6fd-4cb0-41a2-8eac-c3732f000216/collection/46987630-4c085848-1ac1-4aac-b151-d623b4ada87e?action=share&source=collection_link&creator=46987630"
+	},
+	"item": [
+		{
+			"name": "BarangayRequest",
+			"item": [
+				{
+					"name": "BarangayRequest-Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "BarangayRequest-Post",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BarangayComplaints",
+			"item": [
+				{
+					"name": "BarangayComplaint-Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "BarangayComplaint-Post",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BarangayAnnouncement",
+			"item": [
+				{
+					"name": "BarangayAnnouncement-Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "BarangayAnnouncement-Post",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BarangayOfficialContact",
+			"item": [
+				{
+					"name": "BarangayOfficialContact-Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "BarangayOfficialContact-Post",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarangayConnect.API", "BarangayConnect.API\BarangayConnect.API.csproj", "{E62702AC-AE4B-EE02-9382-98D0650482BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E62702AC-AE4B-EE02-9382-98D0650482BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E62702AC-AE4B-EE02-9382-98D0650482BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E62702AC-AE4B-EE02-9382-98D0650482BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E62702AC-AE4B-EE02-9382-98D0650482BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35914987-D878-4241-BDFE-CD41C3B9B83A}
+	EndGlobalSection
+EndGlobal

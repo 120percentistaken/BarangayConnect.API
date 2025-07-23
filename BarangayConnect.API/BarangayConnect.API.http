@@ -1,0 +1,6 @@
+@BarangayConnect.API_HostAddress = http://localhost:5161
+
+GET {{BarangayConnect.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
